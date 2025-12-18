@@ -42,7 +42,7 @@ class TopKTopPSampler(nn.Module):
         """
         logits = apply_top_k_top_p(logits, k, p)
         probs = logits.softmax(dim=-1, dtype=torch.float32)
-        return random_sample(probs, generators)
+        return random_sample(probs, generators), None
 
     def forward_kunlun(
         self,
